@@ -1,33 +1,64 @@
 ﻿using Hometask2;
+using System.Data;
 
 Month month = new Month();
 string[] name = Enum.GetNames(typeof(Month));
 int[] number = (int[])Enum.GetValues(typeof(Month));
 
-for (int i = 0; i <= number.Length; i++)
+Console.WriteLine("1)Tug'ulgan yil/oy/kun kiriting: ");
+Console.WriteLine("2)Hozirdan boshlab qolgan oylarni chiqarish");
+Console.WriteLine("3)Hozirgi oyning nomini olish");
+Console.Write("command: ");
+int command = Convert.ToInt32(Console.ReadLine());
+belgi:
+
+if (command == 1)
 {
-    if (DateTime.Now.Month <= number[i])
+
+    Console.Write("yil/oy/kun : ");
+    string? birthData = Console.ReadLine();
+    string[]? data = birthData.Split('/');
+    for (int i = 0; i < number.Length; i++)
     {
-        Console.WriteLine(name[i] + " " + DateTime.Now.Month + "-month");
+        if (Convert.ToInt32(data[1]) == number[i])
+        {
+            Console.WriteLine($"Siz tugulgan oy: {name[i]}");
+        }
+
     }
+
+
 }
-
-Console.WriteLine();
-
-for (int i = 0; i <= 12; i++)
+if (command == 2)
 {
-    Console.WriteLine(Enum.GetName(typeof(Month), i));
+    int nowMonth = DateTime.Now.Month;
+    for (int i = nowMonth; i <= 12; i++)
+    {
+        Console.WriteLine(Enum.GetName(typeof(Month), i));
+    }
+
+    Console.WriteLine();
+
+
 }
-
-Console.WriteLine();
-
-
-
-Month birthMonth = Month.February;
-
-if (birthMonth != 0)
+if (command == 3)
 {
-    Console.WriteLine(birthMonth.ToString());
+    for (int i = 0; i < number.Length; i++)
+    {
+        if (DateTime.Now.Month == number[i])
+        {
+            Console.WriteLine(name[i]);
+        }
+    }
+
+    Console.WriteLine();
+
 }
+goto belgi;
+
+
+
+
+
 
 
