@@ -1,17 +1,31 @@
 ﻿using Hometask2;
 
 Month month = new Month();
+string[] name = Enum.GetNames(typeof(Month));
+int[] number = (int[])Enum.GetValues(typeof(Month));
 
-Month currentMonth = Month.November;
-Console.WriteLine(currentMonth.ToString());
-for (int i = (int)currentMonth; i <= (int)Month.November; i++)
+for (int i = 0; i <= number.Length; i++)
 {
-    Console.WriteLine("There is a month until November 2024 next year: " + i.ToString());
+    if (DateTime.Now.Month <= number[i])
+    {
+        Console.WriteLine(name[i] + " " + DateTime.Now.Month + "-month");
+    }
 }
+
+Console.WriteLine();
+
+for (int i = 0; i <= 12; i++)
+{
+    Console.WriteLine(Enum.GetName(typeof(Month), i));
+}
+
+Console.WriteLine();
+
+
 
 Month birthMonth = Month.February;
 
-if (birthMonth != currentMonth)
+if (birthMonth != 0)
 {
     Console.WriteLine(birthMonth.ToString());
 }
