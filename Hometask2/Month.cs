@@ -8,7 +8,7 @@ namespace Hometask2
 {
     enum Month
     {
-        Januaryb = 1,
+        January = 1,
         February = 2,
         March = 3,
         Aprel = 4,
